@@ -14,12 +14,12 @@ Meilensteine:
   - 2a) Unterteilung Frontend/Backend
   - 2b) Ordnerstruktur eingerichtet
 
-2.) User-Registrierung + User-Login abgeschlossen
+3.) User-Registrierung + User-Login abgeschlossen
 
-3.) Produkte + Produktsuche abgeschlossen
+4.) Produkte + Produktsuche abgeschlossen
 
-4.) Funktionen für reg. User abgeschlossen
+5.) Funktionen für reg. User abgeschlossen
 
-5.) Admin-Funktionen abgeschlossen
+6.) Admin-Funktionen abgeschlossen
 
 (Wenn 1 rausfällt, können wir 2/4/5 weiter unterteilen)
