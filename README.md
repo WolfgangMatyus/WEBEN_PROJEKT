@@ -1,6 +1,14 @@
 # WEBEN_PROJEKT
 WEBSHOP - beste-brettspiele.at
 
+# DB connection:
+
+- Docker Desktop starten
+- Docker andmelden
+- GIT Bash öffenen
+- {locales Verzeichnis} /BE/docker-compose.yml
+- // docker compose up -d // ausführen
+
 
 Meilensteine:
 
