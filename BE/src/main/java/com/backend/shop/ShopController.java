@@ -1,4 +1,4 @@
-package com.backend.controller;
+package com.backend.shop;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +12,6 @@ public class ShopController {
     @GetMapping("/get")
     public ResponseEntity<String> getShop() {
 
-        return ResponseEntity.ok("tes");
+        return ResponseEntity.ok("test");
     }
 }
