@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Cart {
+public class Invoice {
 
     @Id
     @GeneratedValue
