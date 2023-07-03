@@ -15,13 +15,10 @@ $(document).ready( function (){
 });
 
 function toggleCartClick(event) {
-    console.log("clickedcart");
     document.getElementById("cartContainer").classList.toggle("show");
 }
 
 function addCartProduct(product_id) {
-    console.log("product_id: ", product_id)
-
     let cart = localStorage.getItem('cart');
     if(!cart) {
         cart = [];
@@ -50,9 +47,8 @@ function addCartProduct(product_id) {
 }
 
 function removeCartProduct(product_id) {
-    console.log("product_id wird gelöscht: ", product_id)
-    // find in productData
 
+    // find in productData
     let cart = localStorage.getItem('cart');
     if(!cart) {
         cart = [];
@@ -132,7 +128,6 @@ function drop(event) {
 //-- write ShoppingCart to CartProductsJson
 
 function createCartContent() {
-    console.log("loadCart");
     let cartHeader =
         '<div class="header" id="cartHeader">' +
         '<div class="row">' +
@@ -222,10 +217,9 @@ function openPopup() {
 
 function applyCoupon() {
     var couponInput = document.getElementById("coupon-input").value;
+
     // Hier können Sie den Gutscheinwert prüfen und die Gesamtsumme entsprechend reduzieren.
     // Beispiel:
-
-    console.log("couponInput", couponInput);
 
     $.ajax({
         method: "GET",

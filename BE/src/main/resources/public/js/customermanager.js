@@ -5,9 +5,7 @@ waitForJobs();
 async function waitForJobs() {
     try {
         await getUsers()
-        console.log("Kunden abholen fertig");
         loadUserWorkbench()
-        console.log(JSON.stringify(usersData));
         loadUsersList(usersData)
     } catch (error) {
         console.log("An error occured: ", error);
@@ -44,7 +42,6 @@ function loadUserWorkbench(){
 }
 
 function addUser(){
-    console.log("addUserClicked");
     var firstName = $("#firstName").val();
     var lastName = $("#lastName").val();
     var email = $("#lastName").val();
@@ -63,7 +60,7 @@ function addUser(){
         role: userRole
     };
 
-    console.log(newUser)
+
 //-- Produkt zum Array hinzufügen --//
     //products.push(product); // Produkt zum Array hinzufügen
     $.ajax({
@@ -95,7 +92,6 @@ function addUser(){
 };
 
 function loadUsersList(usersData){
-    console.log("loadUsersList");
     let adminUserListHeader =
         '<ul id="adminUser">'+
         '<div id="userList">'+
@@ -118,7 +114,6 @@ function loadUsersList(usersData){
     $("#allUserData").append(adminUserListHeader);
 
     $.each(usersData, function (i, user) {
-        console.log("addListItem: " + JSON.stringify(usersData));
         let listItem = '<li class="list-group-item" data-userId="' + user.id + '">'
             + '<div class="row">'
             + '<div class="col">'+ user.id + '</div>'
@@ -142,12 +137,8 @@ function loadUsersList(usersData){
 // Eventlistener für den "Löschen" Button
 function deleteUser() {
     let listItem = $(this).closest("li");
-    console.log(listItem);
     let index = $("#adminUser li").index(listItem);
     let userId = listItem.attr("data-userId");
-
-    console.log("index: " + index);
-    console.log("productId: " + userId);
 
     $.ajax({
         url: "/api/v1/admin/user/" + userId,
@@ -170,12 +161,8 @@ function deleteUser() {
 
 function activateUser() {
     let listItem = $(this).closest("li");
-    console.log(listItem);
     let index = $("#adminUser li").index(listItem);
     let userId = listItem.attr("data-userId");
-
-    console.log("index: " + index);
-    console.log("userId: " + userId);
 
     $.ajax({
         url: "/api/v1/admin/activateUser/" + userId,
@@ -196,12 +183,8 @@ function activateUser() {
 
 function deactivateUser() {
     let listItem = $(this).closest("li");
-    console.log(listItem);
     let index = $("#adminUser li").index(listItem);
     let userId = listItem.attr("data-userId");
-
-    console.log("index: " + index);
-    console.log("userId: " + userId);
 
     $.ajax({
         url: "/api/v1/admin/deactivateUser/" + userId,

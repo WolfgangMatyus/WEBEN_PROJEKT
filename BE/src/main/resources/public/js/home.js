@@ -5,7 +5,6 @@ waitForHomeJobs();
 async function waitForHomeJobs() {
     try {
         await getProducts();
-        console.log("Beide fertig");
         InitializeSearchFilter();
         loadProducts(productsData);
     } catch (error) {
@@ -39,14 +38,9 @@ function InitializeSearchFilter() {
 
 function loadProducts(productsData) {
 
-    console.log("loadProducts: " + productsData);
-
     var categoryFilterValue = $("#categoryFilter").val();
-    console.log("categoryFilterValue: " + categoryFilterValue);
     var priceFilterValue = $("#priceFilter").val();
-    console.log("priceFilterValue: " + priceFilterValue);
     var searchInputValue = $("#searchInput").val().toLowerCase();
-    console.log("searchInputValue: " + searchInputValue);
 
     let productCardsList =
         '<div id="productList" class="row row-cols-1 row-cols-md-3 g-4">' +
@@ -129,6 +123,5 @@ function loadProducts(productsData) {
 
 // Call the loadProducts function when the filter values change or search input is entered
 $(document).on("change keyup", "#categoryFilter, #priceFilter, #searchInput", function () {
-    console.log("Filter triggered");
     loadProducts(productsData);
 });

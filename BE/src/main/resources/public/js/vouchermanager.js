@@ -52,7 +52,7 @@ function loadProductList(){
 
 
 function addVoucher(){
-    console.log("addProductClicked");
+
     var voucherAmount = $("#voucherAmount").val();
     var voucherDate = $("#voucherDate").val();
 

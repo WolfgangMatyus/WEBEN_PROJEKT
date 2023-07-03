@@ -5,9 +5,7 @@ waitForJobs();
 async function waitForJobs() {
     try {
         await getProducts()
-        console.log("Produkte abholen fertig");
         loadProductWorkbench()
-        console.log(JSON.stringify(productsData));
         loadProductList(productsData)
     } catch (error) {
         console.log("An error occured: ", error);
@@ -39,7 +37,7 @@ function loadProductWorkbench(){
 }
 
 function addProduct(){
-    console.log("addProductClicked");
+
     var productName = $("#productName").val();
     var productDescription = $("#productDescription").val();
     var productPrice = parseFloat($("#productPrice").val());
@@ -56,7 +54,6 @@ function addProduct(){
         rating: 0
     };
 
-    console.log(newProduct)
 //-- Produkt zum Array hinzufügen --//
     //products.push(product); // Produkt zum Array hinzufügen
     $.ajax({
@@ -128,12 +125,8 @@ function loadProductList(productsData){
  // Eventlistener für den "Löschen" Button
  function deleteProduct() {
     let listItem = $(this).closest("li");
-    console.log(listItem);
     let index = $("#adminProducts li").index(listItem);
     let productId = listItem.attr("data-productId");
-
-    console.log("index: " + index);
-    console.log("productId: " + productId);
 
      $.ajax({
          url: "/api/v1/admin/product/" + productId,

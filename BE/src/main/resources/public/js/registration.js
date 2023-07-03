@@ -97,7 +97,6 @@ function validateInput() {
 }
 
 function sendRegistrationData(){
-    console.log("sendRegistration");
 
     var data = {
         username: $('#username').val(),
@@ -112,7 +111,6 @@ function sendRegistrationData(){
         activeL: 1
     }
 
-    console.log(data);
     $.ajax({
         url: "/api/v1/auth/register",
         method: "POST",

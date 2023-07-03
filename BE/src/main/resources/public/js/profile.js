@@ -12,7 +12,6 @@ async function waitForProfileJobs() {
         await getCurrentUser();
         loadProfileNavbar();
         loadUserData();
-        console.log("alle fertig");
     } catch (error) {
         console.log("An error occured: ", error);
     }
@@ -20,7 +19,6 @@ async function waitForProfileJobs() {
 
 //-- Navigation User Profile --//
 function loadProfileNavbar(){
-    console.log("loadProfile");
     let profileCardNavbar = '<div class="card" id="cardStammDaten">'
         +'<div class="card-header" id="stammDatenHeader">'
         +'<ul class="nav nav-tabs card-header-tabs">'
@@ -48,7 +46,7 @@ $(document).on(    'click', '#invoicesNav', setUserInvoicesActive);
 
 //-- Navigation User Profile Functionality --//
 function setUserDataActive(){
-    console.log("setUserDataNavActive");
+
     $(".profile-card-body").hide()
     $(".nav-link").attr("class", "nav-link")
     $("#userData-link").attr("class", "nav-link active")
@@ -56,7 +54,7 @@ function setUserDataActive(){
 }
 
 function setUserCartActive(){
-    console.log("setUserCartNavActive");
+
     $(".profile-card-body").hide()
     loadUserCart();
     $(".nav-link").attr("class", "nav-link")
@@ -65,7 +63,7 @@ function setUserCartActive(){
 }
 
 function setUserInvoicesActive(){
-    console.log("setUserInvoicesNavActive");
+
     $(".profile-card-body").hide()
     loadUserInvoices();
     $(".nav-link").attr("class", "nav-link")
@@ -74,7 +72,7 @@ function setUserInvoicesActive(){
 }
 
 function loadUserData(){
-    console.log("loadUserData: " + userData);
+
     let userDataHtml = '<div class="profile-card-body" id="userStammdaten">'
         +'<h5 class="card-title">Ihre Userstammdaten:</h5>'
         +'<div class="userCurrentData" id="userCurrentData">'
@@ -142,7 +140,7 @@ function loadUserData(){
 }
 
 function changeUserData(){
-    console.log("changeUserData");
+
     $("#username").append('<input type="text" class="col-3 changeInput" id="changeUsername" type="text" type="text" placeholder="'+userData.username+'"/>');
     $("#email").append('<input type="email" class="col-3 changeInput center" id="changeEmail" type="text" placeholder="'+userData.email+'"/>');
     $("#firstname").append('<input type="text" class="col-3 changeInput" id="changeFirstname" type="text" type="text" placeholder="'+userData.firstname+'"/>');
@@ -155,7 +153,7 @@ function changeUserData(){
 }
 
 function updateUser() {
-    console.log("updateUserClicked");
+
     if ($('#changeEmail').val() === '') {var updateEmail = userData.email} else {updateEmail = $("#changeEmail").val();}
     if ($('#changeUsername').val() === '') {var updateUsername = userData.username} else {updateUsername = $("#changeUsername").val();}
     if ($('#changeFirstname').val() === '') {var updateFirstname = userData.firstname} else {updateFirstname = $("#changeFirstname").val();}
@@ -179,7 +177,7 @@ function updateUser() {
         town: updateTown,
         payment: updatePayment,
     };
-    console.log("updateUser: " + JSON.stringify(updateUser));
+
     // Passwortabfrage
     $.ajax({
         url: "/api/v1/admin/user/"+ userData.id,
@@ -198,7 +196,7 @@ function updateUser() {
     });
     location.reload();
 }
-
+/*
 function loadUserCart(){
     console.log("UserCart loaded")
 }
@@ -206,3 +204,4 @@ function loadUserCart(){
 function loadUserInvoices(){
     console.log("UserInvoices loaded")
 }
+*/
