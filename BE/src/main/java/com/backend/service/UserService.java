@@ -1,9 +1,7 @@
 package com.backend.service;
 
-import com.backend.entity.Cart;
-import com.backend.entity.Voucher;
-import com.backend.repository.CartRepository;
-import com.backend.repository.VoucherRepository;
+import com.backend.entity.Invoice;
+import com.backend.repository.InvoiceRepository;
 import com.backend.security.token.TokenRepository;
 import com.backend.security.user.User;
 import com.backend.security.user.UserRepository;
@@ -13,11 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -25,7 +20,7 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
-    private final CartRepository cartRepository;
+    private final InvoiceRepository invoiceRepository;
     public User getUserById(Integer userId) {
         return userRepository.findById(userId).orElse(null);
     }
@@ -41,15 +36,15 @@ public class UserService {
         return null;
     }
 
-    public List<Cart> getCartByUser(User user) {
-        return cartRepository.findByUserId(user.getId());
+    public List<Invoice> getCartByUser(User user) {
+        return invoiceRepository.findByUserId(user.getId());
     }
 
-    public Cart createCart(User user) {
+    public Invoice createCart(User user) {
 
-        Cart cart = new Cart();
-        cart.setUser(user);
-        return cartRepository.save(cart);
+        Invoice invoice = new Invoice();
+        invoice.setUser(user);
+        return invoiceRepository.save(invoice);
     }
 
     public void saveUser(User user) {

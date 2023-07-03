@@ -1,18 +1,17 @@
 package com.backend.service;
 
+import com.backend.entity.Invoice;
 import com.backend.entity.Product;
 import com.backend.entity.Voucher;
-import com.backend.repository.CartRepository;
+import com.backend.repository.InvoiceRepository;
 import com.backend.repository.ProductRepository;
 import com.backend.repository.VoucherRepository;
-import com.backend.security.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +21,8 @@ import java.util.Optional;
 public class ShopService {
     private final ProductRepository productRepository;
     private final VoucherRepository voucherRepository;
+
+    private final InvoiceRepository invoiceRepository;
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
@@ -98,6 +99,28 @@ public class ShopService {
 
     public Voucher getVoucherById(Integer voucherId) {
         return voucherRepository.findById(voucherId).orElse(null);
+    }
+
+    public Invoice createInvoice(Invoice invoice) {return  invoiceRepository.save(invoice);
+    }
+
+    public List<Invoice> getInvoiceByUserID(Integer user_id) {return invoiceRepository.findByUserId(user_id);
+    }
+
+    public void updateInvoice(Integer invoice_id, Invoice invoice) {
+        Invoice invoiceToUpdate = invoiceRepository.getReferenceById(invoice_id);
+        if(invoiceToUpdate != null){
+            invoiceToUpdate.setUser(invoice.getUser());
+            invoiceToUpdate.setCartEntries(invoice.getCartEntries());
+            invoiceToUpdate.setTotal(invoice.getTotal());
+            invoiceRepository.save(invoiceToUpdate);
+        }
+    }
+
+    public Invoice getInvoiceById(Integer invoiceId) {return invoiceRepository.findById(invoiceId).orElse(null);
+    }
+
+    public void deleteInvoice(Integer invoiceId) {invoiceRepository.deleteById(invoiceId);
     }
 }
 

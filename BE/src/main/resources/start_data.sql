@@ -11,7 +11,7 @@ REPLACE INTO product (id, name, price, description, category, img_path, rating) 
 (5, 'Dame', 19.99, 'Beschreibung 5', 'Brettspiel', '5.jpg', 4),
 (6, 'Schach', 21.99, 'Beschreibung 6', 'Brettspiel', '6.jpg', 1);
 
-REPLACE INTO cart (id, total, user_id) VALUES (1, 0, 1), (2, 0, 1), (3, 0, 1);
+REPLACE INTO invoice (id, total, user_id) VALUES (1, 0, 1), (2, 0, 1), (3, 0, 1);
 
 REPLACE INTO cart_entry (id, cart_id, product_id, quantity) VALUES (1, 1, 1, 2), (2, 1, 2, 1), (3, 1, 3, 3);
 
